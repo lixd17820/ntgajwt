@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dip" >
+
+    <ImageView
+        android:id="@+id/img_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dip"
+        android:src="@android:drawable/stat_sys_download" />
+
+    <TextView
+        android:id="@+id/tv_jqtb_down_pg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/img_download"
+        android:text=""
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/img_download"
+        android:text="附件下载未开始"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <ProgressBar
+        android:id="@+id/jqtb_pb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_pb"
+        android:layout_toRightOf="@+id/img_download" />
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<resources>
+   <style name="AppTheme" parent="android:Theme.DeviceDefault" >
+       <item name="android:buttonStyle">@style/btnTextSmall</item>
+   </style>
+    <style name="AppCompat_new" parent="Theme.AppCompat" >
+    </style>
+
+</resources>

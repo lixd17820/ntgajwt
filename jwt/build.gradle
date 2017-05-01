@@ -1,0 +1,40 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        minSdkVersion 12
+        targetSdkVersion 19
+        versionCode 63
+        versionName "63.0"
+    }
+    signingConfigs {
+        myConfig {
+            storeFile file("ntgajwt.key")
+            storePassword "jhckjhck"
+            keyAlias "ntgajwt"
+            keyPassword "jhckjhck"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig  signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    productFlavors {
+        arm {
+            ndk {
+                abiFilters "armeabi"
+            }
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:19.0.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('src/main/libs/SDSES_IDCardReader_1.3.jar')
+}

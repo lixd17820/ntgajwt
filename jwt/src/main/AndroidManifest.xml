@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ntga.jwt">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppCompat_new">
+        <activity
+            android:name=".MainTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.ntga.jwt.START" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".JwtAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/jwtappwidetprovider" />
+        </receiver>
+
+        <activity
+            android:name=".ConfigWfdmActivity"
+            android:configChanges="keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigBluetoothActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrintJdsList"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigWsglActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigNetworkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZapcGzxxActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ConfigJtfsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ConfigMjgrxxActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JdsPreviewActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".MainReferService"
+            android:enabled="true" />
+        <service
+            android:name=".ReadID2Card"
+            android:enabled="true" />
+
+        <receiver android:name=".BootServeiceReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".JbywFxcActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity android:name=".CamActivity" />
+        <activity
+            android:name=".ZapcJdcActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZapcRyxxActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywGzrzlrActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdJycxJbqklrActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdRyclJbqkActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".AcdFindWfxwActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdSsZrTjjgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".ZhcxMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZhcxConditionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZhcxQueryResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZhcxOneRecordListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZapcGzxxListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZapcXzqhListActitivy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdSimpleShowList"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AcdFindLawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RepairShowListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RepairJtssActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CameraActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".MainQueryMjJobActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdTakePhotoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcdPhotoListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigParamSetting"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BkPicMesShowActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JqtbListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JqtbDetailActivity"
+            android:label="@string/jqtb_detail"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywGcmBBActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GcmBbListActivity"
+            android:label="@string/gcm_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JdsUnJkPrintListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigWfddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".JbywSixSpListActivity"
+            android:label="@string/six_sp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywSixSpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ConfigWfdmForceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FileManager"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VioJycxActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".VioQzcsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".VioQwjgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".VioWftzActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new" />
+        <activity
+            android:name=".JbywVioFzjgActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrintJdsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigIconActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywSpringDjListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywSpringDjMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywTruckCheckActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywTruckVehicleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywTruckDriverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywTruckQymcActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZhcxWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfigMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywFxcListActivity"
+            android:label="@string/fxczf_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".ShowImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbjwZhcxActivity"
+            android:label="@string/jbyw_bdrk_title"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywIdCardBdbjActivity"
+            android:label="@string/idcard_title"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReadSenseCardActivity"
+            android:label="@string/one_idcard_title"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbjwClgjZhcxActivity"
+            android:label="@string/query_clgj"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ZhcxClgjResultActivity"
+            android:label="@string/result_clgj"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywSchoolVehActivity"
+            android:label="@string/lab_school_tcz"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JbywForbidPassActivity"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

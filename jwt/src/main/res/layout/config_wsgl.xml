@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/bottom_but"
+        android:gravity="center_horizontal"
+        android:paddingTop="3dip"
+        android:background="#aaa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/But_request_ws"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="获取" />
+
+        <Button
+            android:id="@+id/But_send_ws"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="上交" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/TextView01"
+        android:text="文书类型："
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_toRightOf="@+id/TextView01"
+        android:id="@+id/Spin_wslb"
+        android:layout_alignTop="@+id/TextView01" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:id="@android:id/list"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Spin_wslb"></ListView>
+
+</RelativeLayout>

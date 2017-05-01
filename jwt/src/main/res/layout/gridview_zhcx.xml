@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:layout_above = "@+id/Tabs">
+		<GridView android:id="@+id/gridview_zhcx" android:numColumns="3"
+			android:gravity="center_horizontal" android:layout_width="wrap_content"
+			android:layout_height="fill_parent" android:verticalSpacing="5dip" android:stretchMode="columnWidth">
+		</GridView>
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <drawable name="darkgray">#404040ff</drawable>
+    <drawable name="red">#ff00ff</drawable>
+    <drawable name="green">#0ff0ff</drawable>
+    <drawable name="lightgray">#c0c0c0ff</drawable>
+    <drawable name="yellow">#ffFF33ff</drawable>
+    <drawable name="blue">#00ffff</drawable>
+    <drawable name="gray">#808080ff</drawable>
+    <drawable name="magenta">#ff6699ff</drawable>
+    <drawable name="cyan">#66ffffff</drawable>
+    <drawable name="black">#000000</drawable>
+    <drawable name="white">#FFFFFF</drawable>
+    <drawable name="tabcolor">#FF000000</drawable>
+    <drawable name="backgrond">#000000</drawable>
+    <color name="unread_bgcolor">#ffffffff</color>
+    <color name="read_bgcolor">#ffeeeeee</color>
+    <!-- 颜色 -->
+    <color name="Black">#000000</color>
+    <color name="Red">#FF0000</color>
+    <color name="Gleen">#00FF00</color>
+    <color name="Blue">#8080FF</color>
+    <color name="White">#FFFFFF</color>
+    <color name="None">#00000000</color>
+    <color name="TextBackColor">#63B8FF</color>
+    <color name="PickColor">#FF00FF</color>
+    <!-- 日历 及新增颜色-->
+    <color name="calendar_background">#000000</color>
+    <color name="recordremind_background">#FFFFFF</color>
+    <color name="border_color">#FFFFFF</color>
+    <color name="weekname_color">#FFFFFF</color>
+    <color name="day_color">#FFFFFF</color>
+    <color name="inner_grid_color">#FFFFFF</color>
+    <color name="prev_next_month_day_color">#999999</color>
+    <color name="text_color">#FFFF00</color>
+    <color name="recordremindtext_color">#000000</color>
+    <color name="current_day_color">#FF0000</color>
+    <color name="today_background_color">#FF0000</color>
+    <color name="today_color">#FFFFFF</color>
+    <color name="sunday_saturday_color">#FF0000</color>
+    <color name="sunday_saturday_prev_next_month_day_color">#990000</color>
+    <color name="transparent">#50000000</color>
+    <color name="Calendar_WeekBgColor">#EFE7DE</color>
+    <color name="Calendar_WeekFontColor">#8C8A8C</color>
+    <color name="Calendar_DayBgColor">#F7F7F7</color>
+    <color name="isHoliday_BgColor">#E0E0E0</color>
+    <color name="unPresentMonth_FontColor">#8C8A8C</color>
+    <color name="isPresentMonth_FontColor">#000000</color>
+    <color name="isToday_BgColor">#EBDCC1</color>
+    <color name="specialReminder">#FF0000</color>
+    <color name="commonReminder">#BDBAB5</color>
+    <color name="headerDate">#3300FF</color>
+    <color name="Holiday_Color">#CCCC66</color>
+    <color name="HolidayBg">#FFFF99</color>
+    <color name="HolidayText">#996633</color>
+    <!-- 无内容EditText背景色 -->
+    <color name="backNoText">#999999</color>
+</resources>

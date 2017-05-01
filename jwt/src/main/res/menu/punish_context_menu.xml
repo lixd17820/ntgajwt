@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:id="@+id/add_wfxw" android:icon="@android:drawable/ic_menu_upload"
+		android:title="加入违法行为" />
+	<item android:id="@+id/groupItem1" android:title="group one" />
+</menu>

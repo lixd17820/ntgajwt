@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 网络连接模式:   " >
+        </TextView>
+
+        <ToggleButton
+            android:id="@+id/TogButNetwork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="    离线    "
+            android:textOn="    在线     " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" GPS位置上传： " />
+
+        <ToggleButton
+            android:id="@+id/tog_gps_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="   不上传     "
+            android:textOn="  上传位置   " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 上传频率（分钟） " />
+
+        <Spinner
+            android:id="@+id/spin_upload_sjjg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 身份证验证： " />
+
+        <ToggleButton
+            android:id="@+id/tog_check_sfzh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="   宽松模式     "
+            android:textOn="   严格模式     " />
+    </LinearLayout>
+
+</LinearLayout>

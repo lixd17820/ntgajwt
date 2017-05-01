@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+		android:id="@+id/textView1" android:text="开始时间"></TextView>
+	<EditText android:layout_width="fill_parent" android:id="@+id/edit_sttime"
+		android:layout_toRightOf="@+id/textView1" android:layout_toLeftOf="@+id/but_gzrz_sttime"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/textView1"></EditText>
+	<Button android:layout_width="wrap_content"
+		android:layout_alignTop="@+id/textView1" android:layout_height="wrap_content"
+		android:layout_alignParentRight="true" android:id="@+id/but_gzrz_sttime"
+		android:text="修改"></Button>
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/edit_sttime"
+		android:id="@+id/textView2" android:layout_toLeftOf="@+id/edit_sttime"
+		android:text="结束时间"></TextView>
+	<EditText android:layout_width="fill_parent" android:id="@+id/edit_etime"
+		android:layout_toLeftOf="@+id/but_gzrz_etime"
+		android:layout_toRightOf="@+id/textView2" android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/textView2"></EditText>
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/textView2"
+		android:id="@+id/but_gzrz_etime" android:layout_alignParentRight="true"
+		android:text="修改"></Button>
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/edit_etime"
+		android:id="@+id/textView3" android:layout_toLeftOf="@+id/edit_etime"
+		android:text="勤务状态"></TextView>
+	<Spinner android:layout_width="fill_parent"
+		android:layout_toRightOf="@+id/textView3" android:id="@+id/spin_qwzt"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/textView3"></Spinner>
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/spin_qwzt"
+		android:id="@+id/textView4" android:layout_toLeftOf="@+id/spin_qwzt"
+		android:text="特别说明"></TextView>
+	<EditText android:layout_width="fill_parent" android:id="@+id/edit_tbsm"
+		android:layout_toRightOf="@+id/textView4" android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/textView4" android:lines="3"></EditText>
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/edit_tbsm"
+		android:id="@+id/textView5" android:layout_toLeftOf="@+id/edit_tbsm"
+		android:text="呈批领导"></TextView>
+	<Spinner android:layout_width="fill_parent"
+		android:layout_toRightOf="@+id/textView5" android:id="@+id/spin_cpld"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/textView5"></Spinner>
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/spin_cpld"
+		android:id="@+id/textView6" android:layout_toLeftOf="@+id/spin_cpld"
+		android:text="登记时间"></TextView>
+	<EditText android:layout_width="fill_parent" android:id="@+id/edit_gzrz_djsj"
+		android:layout_toLeftOf="@+id/but_chg_djsj" android:layout_toRightOf="@+id/textView6"
+		android:layout_height="wrap_content" android:layout_alignTop="@+id/textView6"></EditText>
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentRight="true"
+		android:id="@+id/but_chg_djsj" android:layout_alignTop="@+id/textView6"
+		android:text="修改"></Button>
+	<LinearLayout android:orientation="horizontal" android:id="@+id/bottom_but"
+		android:gravity="center_horizontal" android:paddingTop="3dip"
+		android:background="#aaa" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+		<Button android:id="@+id/submitButton" android:layout_weight="1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="提交" />
+		<Button android:id="@+id/reloadButton" android:layout_weight="1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="重置" />
+		<Button android:id="@+id/queryButton" android:layout_weight="1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="查询" />
+	</LinearLayout>
+</RelativeLayout>

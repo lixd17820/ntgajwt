@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+    <grid name="交巡警业务" gid="0" img="main_ywcl">
+        <menu name="简易程序" catalog="0" cname="com.ntga.jwt.VioJycxActivity" data="1"
+            dname="cfCatalog" id="0" img="menu_ywcl_jycf" pck="com.ntga.jwt" qx="0" />
+        <menu name="轻微警告" catalog="0" cname="com.ntga.jwt.VioQwjgActivity" data="0"
+            dname="cfCatalog" id="1" img="menu_ywcl_qwjg" pck="com.ntga.jwt" qx="0" />
+        <menu name="强制措施" catalog="0" cname="com.ntga.jwt.VioQzcsActivity" data="3"
+            dname="cfCatalog" id="2" img="menu_ywcl_qzcs" pck="com.ntga.jwt" qx="0" />
+        <menu name="文书打印" catalog="0" cname="com.ntga.jwt.PrintJdsList" data="" dname="" id="3"
+            img="menu_xtgl_dyjpz" pck="com.ntga.jwt" qx="0" />
+        <menu name="治安盘查" catalog="0" cname="com.ntga.jwt.ZapcGzxxListActivity" data="" dname=""
+            id="4" img="menu_xxcx_rkzc" pck="com.ntga.jwt" qx="0" />
+        <menu name="设施报修" catalog="0" cname="com.ntga.jwt.RepairShowListActivity" data="" dname=""
+            id="5" img="main_xtgl" pck="com.ntga.jwt" qx="0" />
+        <menu name="工作量统计" catalog="0" cname="com.ntga.jwt.MainQueryMjJobActivity" data="" dname=""
+            id="6" img="menu_xtgl_mjxx" pck="com.ntga.jwt" qx="0" />
+        <menu name="简易事故处理" catalog="0" cname="com.ntga.jwt.AcdSimpleShowList" data="" dname=""
+            id="7" img="menu_xtgl_wsgl" pck="com.ntga.jwt" qx="0" />
+        <menu name="事故照片采集" catalog="0" cname="com.ntga.jwt.AcdPhotoListActivity" data="" dname=""
+            id="8" img="menu_ywcl_fxccf" pck="com.ntga.jwt" qx="0" />
+        <menu name="非现场处罚" catalog="0" cname="com.ntga.jwt.JbywFxcListActivity" data="" dname=""
+            id="9" img="menu_camera" pck="com.ntga.jwt" qx="0" />
+        <menu name="本地人口综查" catalog="0" cname="com.ntga.jwt.JbjwZhcxActivity" data="" dname=""
+            id="10" img="menu_ywcl_zapc" pck="com.ntga.jwt" qx="0" />
+        <menu name="学校临停证" catalog="0" cname="com.ntga.jwt.JbywSchoolVehActivity" data="" dname=""
+            id="11" img="school_tcz" pck="com.ntga.jwt" qx="0" />
+        <menu name="六分审批" catalog="0" cname="com.ntga.jwt.JbywSixSpListActivity" data="" dname=""
+            id="12" img="menu_six_sp" pck="com.ntga.jwt" qx="0" />
+        <menu name="春运管理" catalog="0" cname="com.ntga.jwt.JbywSpringDjListActivity" data="" dname=""
+            id="13" img="menu_bus" pck="com.ntga.jwt" qx="0" />
+        <menu name="重型车管理" catalog="0" cname="com.ntga.jwt.JbywTruckVehicleActivity" data="" dname=""
+            id="14" img="menu_truck" pck="com.ntga.jwt" qx="0" />
+        <menu name="关城门报备" catalog="0" cname="com.ntga.jwt.GcmBbListActivity" data="" dname=""
+            id="15" img="menu_xtgl_zqdd" pck="com.ntga.jwt" qx="0" />
+        <menu name="禁区通行证" catalog="0" cname="com.ntga.jwt.JbywForbidPassActivity" data=""
+            dname="" id="16" img="menu_xxcx_wfcx" pck="com.ntga.jwt" qx="0" />
+        <menu name="标线系统" catalog="0" cname="com.sky.manual.startBroadcast" data="" dname="out"
+            id="17" img="warn_green" pck="com.sky.manual" qx="0" />
+    </grid>
+
+    <grid name="综合查询" gid="1" img="main_xxcx"></grid>
+
+    <grid name="系统配置" gid="2" img="main_xtgl">
+
+        <menu name="文书管理" catalog="2" cname="com.ntga.jwt.ConfigWsglActivity" data="" dname=""
+            id="200" img="menu_xtgl_wsgl" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="违法代码" catalog="2" cname="com.ntga.jwt.ConfigWfdmActivity" data="" dname=""
+            id="201" img="menu_xtgl_wfdm" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="强制措施代码" catalog="2" cname="com.ntga.jwt.ConfigWfdmForceActivity" data=""
+            dname="" id="202" img="menu_ywcl_qzcs" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="执勤地点" catalog="2" cname="com.ntga.jwt.ConfigWfddActivity" data="" dname=""
+            id="203" img="menu_xtgl_zqdd" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="蓝牙设备配置" catalog="2" cname="com.ntga.jwt.ConfigBluetoothActivity" data=""
+            dname="" id="204" img="menu_xtgl_dyjpz" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="参数配置" catalog="2" cname="com.ntga.jwt.ConfigParamSetting" data="" dname=""
+            id="205" img="menu_xtgl_wlpz" pck="com.ntga.jwt" qx="0" />
+
+        <menu name="民警基本信息" catalog="2" cname="com.ntga.jwt.ConfigMjgrxxActivity" data="" dname=""
+            id="206" img="menu_xtgl_mjxx" pck="com.ntga.jwt" qx="0" />
+    </grid>
+
+</root>

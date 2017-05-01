@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="#aaa">
+		<TextView android:id="@+id/title_left_text"
+			android:layout_alignParentLeft="true" android:ellipsize="end"
+			android:singleLine="true" style="?android:attr/windowTitleStyle"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="left_text" android:textSize="22sp"/>
+		<TextView android:id="@+id/title_right_text" android:textSize="18sp"
+			android:layout_alignParentRight="true" android:ellipsize="end"
+			android:singleLine="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:textColor="#fff"
+			style="?android:attr/windowTitleStyle" android:text="right_text" />
+		<Spinner android:layout_width="wrap_content" android:id="@+id/Spinn_mid"
+			android:layout_height="wrap_content" android:layout_toLeftOf="@+id/title_right_text"
+			android:layout_alignTop="@+id/title_right_text"></Spinner>
+	</RelativeLayout>
+	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:focusableInTouchMode="true"
+		android:focusable="false" />
+</LinearLayout>

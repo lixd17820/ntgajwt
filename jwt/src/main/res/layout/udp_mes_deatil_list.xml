@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_frame"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/linear_lxr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_udp_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginTop="5px" android:inputType="none" android:editable="false" android:singleLine="true">
+        </EditText>
+
+        <Button
+            android:id="@+id/but_search_lxr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 选择 " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/but_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 发送 " />
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@+id/linear_lxr" 
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+    </ListView>
+
+</RelativeLayout>

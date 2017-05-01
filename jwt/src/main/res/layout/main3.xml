@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!-- 底部功能菜单栏 -->
+
+    <LinearLayout
+        android:id="@+id/bottomlist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FF999999"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/line_jbyw"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" >
+
+            <ImageView
+                android:id="@+id/image_jbyw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_launcher" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交巡警业务"
+                android:textColor="@drawable/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_zhcx"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="1dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" >
+
+            <ImageView
+                android:id="@+id/image_zhcx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_launcher" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="综合查询"
+                android:textColor="@drawable/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_xtpz"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip" >
+
+            <ImageView
+                android:id="@+id/image_xtpz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_launcher" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统配置"
+                android:textColor="@drawable/black" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- 动态显示界面 -->
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/bottomlist"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" 
+        >
+
+        <GridView
+            android:id="@+id/gridView1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dip" 
+            >
+        </GridView>
+    </LinearLayout>
+
+</RelativeLayout>

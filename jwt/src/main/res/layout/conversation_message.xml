@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/presence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dip"
+        android:paddingBottom="20dip"
+        android:src="@drawable/ic_contact_picture"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginLeft="7dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="6dip"
+        android:layout_toLeftOf="@id/presence"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="2dip"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+
+    <ImageView
+        android:id="@+id/attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/date"
+        android:layout_marginLeft="3dip"
+        android:src="@drawable/ic_attachment_universal_small"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="7dip"
+        android:layout_toLeftOf="@id/date"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="abc"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+
+</RelativeLayout>

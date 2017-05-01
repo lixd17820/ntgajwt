@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="读卡器状态："
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tv_cardxx" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/sfzh" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_sfzh"
+            android:inputType="textCapCharacters"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_weight="1"
+        android:text="身份信息："
+        android:id="@+id/tv_sfxx" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_weight="1"
+        android:text="比对信息："
+        android:id="@+id/tv_bdxx" />
+
+    <LinearLayout
+        android:id="@+id/bottom_but"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#aaa"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="3dip">
+
+
+
+        <Button
+            android:id="@+id/btn_query"
+            style="@style/btnBottom"
+            android:text="@string/hand_bdbj" />
+        <Button
+            android:id="@+id/btn_clear"
+            style="@style/btnBottom"
+            android:text="@string/clear_info" />
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/btnBottom"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

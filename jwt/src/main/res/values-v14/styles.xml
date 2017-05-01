@@ -1,0 +1,21 @@
+<resources>
+   <style name="AppTheme" parent="android:Theme.DeviceDefault" >
+       <item name="android:buttonStyle">@style/btnTextSmall</item>
+   </style>
+    <style name="AppCompat_new" parent="Theme.AppCompat" >
+        <item name="android:buttonStyle">@style/btnTextSmall</item>
+    </style>
+    <style name="btnTextSmall" parent="@android:style/Widget.Button.Small">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+	    <!--  <item name="android:textSize">16sp</item>-->
+	</style>
+	<style name="btnBottom" parent="@android:style/Widget.Button">
+	    <item name="android:layout_width">0dip</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:layout_weight">1</item>
+	</style>
+	<style name="normalBtn" parent="@android:style/Widget.Button">
+	    <item name="android:layout_width">wrap_content</item>
+	    <item name="android:layout_height">wrap_content</item>
+	</style>
+</resources>
