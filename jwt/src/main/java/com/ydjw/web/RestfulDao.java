@@ -28,7 +28,6 @@ import com.ntga.bean.TTViolation;
 import com.ntga.bean.TruckCheckBean;
 import com.ntga.bean.TruckDriverBean;
 import com.ntga.bean.TruckVehicleBean;
-import com.ntga.bean.UpdateFile;
 import com.ntga.bean.VioDrvBean;
 import com.ntga.bean.VioFxczfBean;
 import com.ntga.bean.VioVehBean;
@@ -38,6 +37,9 @@ import com.ntga.dao.AcdSimpleDao;
 import com.ntga.dao.GlobalConstant;
 import com.ntga.dao.GlobalData;
 import com.ntga.dao.GlobalMethod;
+import com.ntga.login.DownFileThread;
+import com.ntga.login.LoginDao;
+import com.ntga.login.UpdateFile;
 import com.ntga.tools.TypeCenvert;
 import com.ntga.tools.ZipUtils;
 import com.ntga.xml.CommParserXml;
@@ -64,10 +66,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -199,6 +203,9 @@ public abstract class RestfulDao {
 
     private final String CHECK_FXC_TZSH = URL_PATH + "checkFxcTzsh";
 
+    private String checkUrl = "/ydjw/services/login/checkJwtUser";
+    private String checkMd5 = "/ydjw/services/ydjw/checkJwtUserNew";
+
     //---------------------------禁区通行证常量-------------------------------
     private final String QUERY_FROBID = FORBID_PATH + "queryPassInfo";
 
@@ -224,6 +231,7 @@ public abstract class RestfulDao {
      * @return
      */
     public WebQueryResult<List<UpdateFile>> updateInfoRestful() {
+
         WebQueryResult<String> re = restfulQuery(getUrl() + UPDATE_FILE, null, GET);
         String err = GlobalMethod.getErrorMessageFromWeb(re);
         WebQueryResult<List<UpdateFile>> res = null;
@@ -1527,9 +1535,220 @@ public abstract class RestfulDao {
         return re;
     }
 
-    public void queryForbidById(String id){
+    public void queryForbidById(String id) {
 
     }
+
+    //------------------------------------------登录文件更新---------------------------------------------
+
+    protected String url = "ydjw/services/login/updateFileVersion";
+
+
+    public WebQueryResult<String> checkUserAndUpdate(String yhbh, String mm,
+                                                     String sbid, boolean isCheckMd5) {
+        String url = getUrl()
+                + (isCheckMd5 ? checkMd5 : checkUrl);
+        Log.e("login url", url);
+        List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+        postParams.add(new BasicNameValuePair("yhbh", yhbh));
+        postParams.add(new BasicNameValuePair("sbid", sbid));
+        postParams.add(new BasicNameValuePair("mm", mm));
+        return restfulQuery(url, postParams, POST, true);
+    }
+
+    /**
+     * 最近的验证、更新、警员信息一次请求返回的方法
+     *
+     * @param yhbh
+     * @param mm
+     * @param sbid
+     * @return
+     */
+    public WebQueryResult<String> checkUserAndUpdate2222(String yhbh, String mm,
+                                                         String sbid, boolean isCheckMd5) {
+        WebQueryResult<String> result = new WebQueryResult<String>();
+        result.setStatus(HttpStatus.SC_BAD_REQUEST);
+        BasicHttpParams httpParameters = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(httpParameters,
+                timeoutConnection);
+        HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+        HttpClient httpclient = new DefaultHttpClient(httpParameters);
+        String url = getUrl()
+                + (isCheckMd5 ? checkMd5 : checkUrl);
+        HttpPost request = new HttpPost(url);
+        // writeDisk(request.getURI().toString());
+        List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+        postParams.add(new BasicNameValuePair("yhbh", yhbh));
+        postParams.add(new BasicNameValuePair("sbid", sbid));
+        postParams.add(new BasicNameValuePair("mm", mm));
+        try {
+            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
+                    postParams, "utf-8");
+            request.addHeader("Content-type", "application/xml");
+            request.setEntity(formEntity);
+            HttpResponse response = httpclient.execute(request);
+            int status = response.getStatusLine().getStatusCode();
+            result.setStatus(status);
+            // writeDisk("return code", "return code is " + status);
+            // 返回数据正常
+            String html = "";
+            if (status == HttpStatus.SC_OK) {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(entity.getContent(), "utf-8"));
+                    String s = null;
+                    while ((s = reader.readLine()) != null) {
+                        html += s;
+                    }
+                    result.setResult(html);
+
+                }
+                Log.e("UpdateFileDao", html);
+            }
+
+        } catch (Exception e) {
+            // writeDisk(e.toString());
+            e.printStackTrace();
+        }
+        httpclient.getConnectionManager().shutdown();
+        return result;
+    }
+
+    private int downFile(String url, File file) {
+        int writeByte = 0;
+        int status = HttpStatus.SC_BAD_REQUEST;
+        BasicHttpParams httpParameters = new BasicHttpParams();
+        HttpClient client = new DefaultHttpClient(httpParameters);
+
+        HttpGet request = new HttpGet(url);
+        try {
+            HttpResponse response = client.execute(request);
+            status = response.getStatusLine().getStatusCode();
+            if (status == HttpStatus.SC_OK) {
+                // long fileSize = response.getEntity().getContentLength();
+                BufferedInputStream in = new BufferedInputStream(response
+                        .getEntity().getContent());
+
+                BufferedOutputStream out = new BufferedOutputStream(
+                        new FileOutputStream(file));
+                byte[] b = new byte[1024];
+                int l = 0;
+                while ((l = in.read(b)) > 0) {
+                    out.write(b, 0, l);
+                    writeByte += l;
+                }
+                out.flush();
+                in.close();
+                out.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writeByte;
+    }
+
+    public int downloadApkFile(UpdateFile uf, String dir, Handler handler,
+                               int fileIndex) {
+        String fileId = uf.getId();
+        String fileName = uf.getFileName();
+        int fileSize = Integer.valueOf(uf.getHashValue());
+        String pack = uf.getPackageName();
+        // 文件过大，分块下载
+        if (fileSize > 100 * 1024) {
+            return downloadSmallFile(fileId, fileName, fileSize, pack, dir,
+                    handler, fileIndex);
+        }
+        int writeByte = 0;
+        int status = HttpStatus.SC_BAD_REQUEST;
+        BasicHttpParams httpParameters = new BasicHttpParams();
+        HttpClient client = new DefaultHttpClient(httpParameters);
+
+        HttpGet request = new HttpGet(getFileUrl() + pack);
+        try {
+
+            HttpResponse response = client.execute(request);
+            status = response.getStatusLine().getStatusCode();
+            if (status == HttpStatus.SC_OK) {
+                // long fileSize = response.getEntity().getContentLength();
+                BufferedInputStream in = new BufferedInputStream(response
+                        .getEntity().getContent());
+
+                File file = new File(dir);
+                if (!file.exists())
+                    file.mkdirs();
+                file = new File(file, fileName);
+                BufferedOutputStream out = new BufferedOutputStream(
+                        new FileOutputStream(file));
+                byte[] b = new byte[1024 * 1024];
+                int l = 0;
+                while ((l = in.read(b)) > 0) {
+                    out.write(b, 0, l);
+                    writeByte += l;
+                    int step = writeByte * 100 / fileSize;
+                    LoginDao.sendData(handler, DownFileThread.DOWNLOADING_APK,
+                            fileIndex, step);
+                }
+                out.flush();
+                in.close();
+                out.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writeByte;
+    }
+
+    private int downloadSmallFile(String fileId, String fileName, int fileSize,
+                                  String pack, String dir, Handler handler, int fileIndex) {
+        File fdir = new File(dir);
+        if (!fdir.exists())
+            fdir.mkdirs();
+        List<File> files = new ArrayList<File>();
+        int count = fileSize / (100 * 1024) + 1;
+        for (int i = 0; i < count; i++) {
+            String url = getFileUrl() + pack + "&index=" + i;
+            File sf = new File(dir, "temp_" + i);
+            int wb = downFile(url, sf);
+            boolean isOk = false;
+            if (i < count - 1) {
+                isOk = wb == 100 * 1024;
+            } else {
+                isOk = wb == fileSize - i * 100 * 1024;
+            }
+            LoginDao.sendData(handler, DownFileThread.DOWNLOADING_APK,
+                    fileIndex, (i + 1) * 100 / count);
+            if (isOk)
+                files.add(sf);
+            else
+                return 0;
+        }
+        if (files.size() != count)
+            return 0;
+        int writeByte = 0;
+        File bigFile = new File(fdir, fileName);
+        try {
+            BufferedOutputStream bout = new BufferedOutputStream(
+                    new FileOutputStream(bigFile));
+            byte[] b = new byte[1024];
+            for (File file : files) {
+                BufferedInputStream bin = new BufferedInputStream(
+                        new FileInputStream(file));
+                int len = 0;
+                while ((len = bin.read(b)) > 0) {
+                    bout.write(b, 0, len);
+                    writeByte += len;
+                }
+                bout.flush();
+                bin.close();
+            }
+            bout.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writeByte;
+    }
+
 
     // ------------------------以下是本类中公用的方法-----------------------------------
 
@@ -1615,18 +1834,22 @@ public abstract class RestfulDao {
         HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
         HttpClient httpclient = new DefaultHttpClient(httpParameters);
         Log.e(getClassName(), url + " method: " + method);
-        String jh = GlobalData.grxx.get(GlobalConstant.JH);
+        String jh = "";
+        String serialNumber = GlobalData.serialNumber == null ? "" : GlobalData.serialNumber;
+        if (GlobalData.grxx != null && GlobalData.grxx.get(GlobalConstant.JH) != null)
+            jh = GlobalData.grxx.get(GlobalConstant.JH);
+
         try {
             HttpResponse response;
             if (method == GET) {
                 HttpGet request = new HttpGet(url);
                 request.addHeader("jybh", jh);
-                request.addHeader("meid", GlobalData.serialNumber);
+                request.addHeader("meid", serialNumber);
                 response = httpclient.execute(request);
             } else {
                 HttpPost requestPost = new HttpPost(url);
                 requestPost.addHeader("jybh", jh);
-                requestPost.addHeader("meid", GlobalData.serialNumber);
+                requestPost.addHeader("meid", serialNumber);
                 if (params != null && params.size() > 0) {
                     UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
                             params, "utf-8");
@@ -1800,6 +2023,8 @@ public abstract class RestfulDao {
     public abstract String getClassName();
 
     public abstract String getPicUrl();
+
+    public abstract String getFileUrl();
 
     public abstract String getJqtbFileUrl();
 

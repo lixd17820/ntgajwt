@@ -19,6 +19,11 @@ public class CdmaResutfulDao extends RestfulDao {
     }
 
     @Override
+    public String getFileUrl() {
+        return "http://www.ntjxj.com/ydjw/DownloadFile?pack=";
+    }
+
+    @Override
     public String getJqtbFileUrl() {
         return getUrl() + JQTB_FILE_URL;
     }

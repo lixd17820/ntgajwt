@@ -103,7 +103,7 @@ public class UpdateInfoThread extends Thread {
         // .getAbsolutePath() + "/jwtdb/param.xml";
         // GlobalMethod.saveParam(self, pf);
         // 无需上专GPS，GPS设备已打开，则关闭
-        //if (GlobalSystemParam.isGpsUpload) {
+        if (GlobalSystemParam.isGpsUpload) {
             LocationManager locm = (LocationManager) self
                     .getSystemService(Context.LOCATION_SERVICE);
             if (!locm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -113,7 +113,7 @@ public class UpdateInfoThread extends Thread {
                 msg.setData(b);
                 mHandler.sendMessage(msg);
             }
-        //}
+        }
     }
 
     private void synSeriousStreet() {

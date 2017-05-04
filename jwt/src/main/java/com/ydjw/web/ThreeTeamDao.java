@@ -42,6 +42,11 @@ public class ThreeTeamDao extends RestfulDao {
     }
 
     @Override
+    public String getFileUrl() {
+        return getUrl() + "ydjw/DownloadFile?pack=";
+    }
+
+    @Override
     public String getJqtbFileUrl() {
         return getUrl() + JQTB_FILE_URL;
     }

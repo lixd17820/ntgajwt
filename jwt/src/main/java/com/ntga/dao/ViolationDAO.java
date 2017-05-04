@@ -130,7 +130,7 @@ public class ViolationDAO {
             } else if (ryfl == 2 && wfzl == GlobalConstant.WFDMZL_FJDC) {
                 return true;
             } else if ((ryfl == 4 || ryfl == 3 || ryfl == 7)
-                    && wfzl == GlobalConstant.WFDMZL_JDC) {
+                    && (wfzl == GlobalConstant.WFDMZL_JDC || wfzl == GlobalConstant.WFDMZL_OTHER)) {
                 return true;
             } else if (wfzl == GlobalConstant.WFDMZL_SG) {
                 return true;
@@ -507,13 +507,16 @@ public class ViolationDAO {
      */
     public static HashMap<String, String> getLoginInfo(ContentResolver resolver) {
         HashMap<String, String> map = new HashMap<String, String>();
-        Uri CONTENT_URI = Uri
-                .parse("content://com.google.provider.SysData/querySys");
-        Cursor c = resolver.query(CONTENT_URI, null, null, null, null);
+        //Uri CONTENT_URI = Uri
+         //       .parse("content://com.google.provider.SysData/querySys");
+        Uri url = Uri.parse("content://" + Userdata.AUTHORITY
+                + "/querysyscode");
+        Cursor c = resolver.query(url, null, null, null, null);
         if (c != null) {
             if (c.moveToFirst()) {
                 do {
                     map.put(c.getString(0), c.getString(1));
+                    Log.e(c.getString(0), c.getString(1));
                 } while (c.moveToNext());
                 c.close();
             }

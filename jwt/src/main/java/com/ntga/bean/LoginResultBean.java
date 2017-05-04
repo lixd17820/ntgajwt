@@ -1,5 +1,8 @@
 package com.ntga.bean;
 
+import com.ntga.login.LoginMjxxBean;
+import com.ntga.login.UpdateFile;
+
 import java.io.Serializable;
 
 @SuppressWarnings("serial")

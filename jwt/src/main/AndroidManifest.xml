@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -26,10 +27,16 @@
             android:name=".MainTestActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppCompat_new">
+
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompat_new">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.ntga.jwt.START" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,6 +50,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/jwtappwidetprovider" />
         </receiver>
+
 
         <activity
             android:name=".ConfigWfdmActivity"
@@ -288,7 +296,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".JbywForbidPassActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -21,8 +21,6 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.ntga.bean.UpdateFile;
-import com.ntga.bean.VioFxczfBean;
 import com.ntga.bean.VioViolation;
 import com.ntga.bean.WebQueryResult;
 import com.ntga.dao.ConnCata;
@@ -31,8 +29,7 @@ import com.ntga.dao.GlobalData;
 import com.ntga.dao.GlobalMethod;
 import com.ntga.dao.GlobalSystemParam;
 import com.ntga.dao.ViolationDAO;
-import com.ntga.database.FxczfDao;
-import com.ntga.thread.FxcListUploadThread;
+import com.ntga.login.UpdateFile;
 import com.ntga.thread.LogoutJwtNewThread;
 import com.ntga.tools.GpsUtils;
 import com.ntga.tools.TypeCenvert;

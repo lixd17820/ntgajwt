@@ -34,7 +34,7 @@
             id="14" img="menu_truck" pck="com.ntga.jwt" qx="0" />
         <menu name="关城门报备" catalog="0" cname="com.ntga.jwt.GcmBbListActivity" data="" dname=""
             id="15" img="menu_xtgl_zqdd" pck="com.ntga.jwt" qx="0" />
-        <menu name="禁区通行证" catalog="0" cname="com.ntga.jwt.JbywForbidPassActivity" data=""
+        <menu name="禁区通行证" catalog="0" cname="com.ntga.jwt.LoginActivity" data=""
             dname="" id="16" img="menu_xxcx_wfcx" pck="com.ntga.jwt" qx="0" />
         <menu name="标线系统" catalog="0" cname="com.sky.manual.startBroadcast" data="" dname="out"
             id="17" img="warn_green" pck="com.sky.manual" qx="0" />

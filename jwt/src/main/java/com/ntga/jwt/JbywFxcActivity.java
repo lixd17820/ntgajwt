@@ -447,7 +447,7 @@ public class JbywFxcActivity extends ActionBarActivity {
                 fxczf = temp;
                 QueryVehHandler qvHandler = new QueryVehHandler(this);
                 QueryVehThread thread = new QueryVehThread(qvHandler,
-                        fxczf.getHpzl() , fxczf.getHphm());
+                        fxczf.getHpzl(), fxczf.getHphm());
                 thread.start();
             }
             return true;
@@ -468,7 +468,7 @@ public class JbywFxcActivity extends ActionBarActivity {
         return false;
     }
 
-    private void saveFxcIntoDb(){
+    private void saveFxcIntoDb() {
         FxczfDao dao = new FxczfDao(self);
         long row = dao.insertFxczfDb(fxczf);
         String result = row + ",";
@@ -506,6 +506,7 @@ public class JbywFxcActivity extends ActionBarActivity {
 
     /**
      * 查询返回后根据情况决定是否提示民警
+     *
      * @param msg
      */
     private void queryVehHandler(Message msg) {
@@ -534,7 +535,7 @@ public class JbywFxcActivity extends ActionBarActivity {
         } else if (!TextUtils.isEmpty(bdjg)) {
             mes = bdjg + "，是否保存？";
         }
-        if(!TextUtils.isEmpty(mes)){
+        if (!TextUtils.isEmpty(mes)) {
             GlobalMethod.showDialogTwoListener("系统提示", mes, "保存", "不保存", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -580,19 +581,23 @@ public class JbywFxcActivity extends ActionBarActivity {
         if (TextUtils.isEmpty(hphm) || hphm.length() < 6)
             return "号牌号码长度不够";
         String hm = hphm.substring(1, hphm.length());
-        if (TextUtils.equals(hpzl, "15") || TextUtils.equals(hpzl, "16") || TextUtils.equals(hpzl, "23")) {
-            if (hm.length() != 5) {
-                return "教练车、挂车号牌为六位，无需汉字";
+        if (TextUtils.equals(hpzl, "51") || TextUtils.equals(hpzl, "52")) {
+            if (hphm.length() != 8)
+                return "新能源车的号牌长度为八位";
+        } else {
+            if ((TextUtils.equals(hpzl, "15") || TextUtils.equals(hpzl, "16") || TextUtils.equals(hpzl, "23"))) {
+                if (hm.length() != 5)
+                    return "教练车、挂车号牌为六位，无需汉字";
+            } else if (hphm.length() != 7) {
+                return "普通号牌号码长度应该为七位";
             }
-        } else if (hphm.length() != 7) {
-            return "号牌号码长度不为七位";
         }
         if (!GlobalMethod.isNumberOrAZ(hm)) {
             return "号牌包含非法字符";
         }
 
-        if (hphm.indexOf("o") >= 0 || hphm.indexOf("O") >= 0) {
-            return "号牌中不能包含字母O可能为数字零";
+        if (hphm.toUpperCase().indexOf("I") >= 0 || hphm.toUpperCase().indexOf("O") >= 0) {
+            return "号牌中不能包含字母O或者I，可能为数字零或者一";
         }
 
         return null;
@@ -648,7 +653,6 @@ public class JbywFxcActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         Log.e("JbywImageView", "onActivityResult");
         // super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -718,9 +722,6 @@ public class JbywFxcActivity extends ActionBarActivity {
             mVehHandler.sendMessage(msg);
         }
     }
-
-
-
 
 
     private Bitmap currentSmallImage;

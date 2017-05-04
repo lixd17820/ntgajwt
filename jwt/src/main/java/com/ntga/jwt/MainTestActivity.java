@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -20,10 +23,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.ntga.adaper.MainMenuAdapter;
 import com.ntga.bean.MenuGridBean;
 import com.ntga.bean.MenuOptionBean;
+import com.ntga.dao.BadgeUtils;
 import com.ntga.dao.ConnCata;
 import com.ntga.dao.GlobalConstant;
 import com.ntga.dao.GlobalData;
@@ -35,6 +40,8 @@ import com.ntga.tools.MainLoading;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
+
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 @SuppressLint("NewApi")
 public class MainTestActivity extends ActionBarActivity {
@@ -59,21 +66,16 @@ public class MainTestActivity extends ActionBarActivity {
         // 根据登录传来的数据,确定是否为离线模式
         //if (!getIntent().hasExtra("connCata"))
         //    finish();
-        int connCata = getIntent().getIntExtra("connCata",
-                ConnCata.UNKNOW.getIndex());
-        GlobalData.connCata = ConnCata.getValByIndex(connCata);
-        MainReferService.serverConnCatalog = GlobalData.connCata;
-
+        //int connCata = getIntent().getIntExtra("connCata",
+        //        ConnCata.UNKNOW.getIndex());
+        //GlobalData.connCata = ConnCata.getValByIndex(connCata);
         setTitle("移动警务");
-
         gv = (GridView) findViewById(R.id.gridView1);
-
         List<MenuGridBean> list = MainLoading.parseMenuXml(self);
         // 根据权限过滤菜单
         list = MainLoading.filterMenuByQx(list, GlobalData.grxx.get("YHLX"));
         MainMenuAdapter ma = new MainMenuAdapter(MainTestActivity.this, list.get(0)
                 .getOptions());
-
         gv.setAdapter(ma);
         setItemListeren();
 
@@ -96,7 +98,21 @@ public class MainTestActivity extends ActionBarActivity {
         new UpdateInfoThread(self, handler).start();
         // 删除错误的警告
         ViolationDAO.delErrorJwjg(getContentResolver());
+        boolean success = ShortcutBadger.applyCount(self, 10);
 
+        Toast.makeText(getApplicationContext(), "Set count=" + 10 + ", success=" + success, Toast.LENGTH_SHORT).show();
+        //删除原登录程序
+        try {
+            String oldInstallPn = "com.jwt.update";
+            PackageInfo pi = self.getApplicationContext().getPackageManager().getPackageInfo(oldInstallPn, 0);
+            if (pi != null) {
+                Uri packageURI = Uri.parse("package:" + oldInstallPn);
+                Intent intent = new Intent(Intent.ACTION_DELETE, packageURI);
+                self.startActivity(intent);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     static class OperGpsHandler extends Handler {
@@ -226,7 +242,6 @@ public class MainTestActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            // 打开照相机
             case R.id.menu_zhcx: {
                 Intent intent = new Intent(self, ZhcxMainActivity.class);
                 startActivity(intent);
@@ -242,6 +257,4 @@ public class MainTestActivity extends ActionBarActivity {
         }
         return false;
     }
-
-
 }
